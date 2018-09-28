@@ -10,7 +10,7 @@ public class ShopPage extends BasePage {
     }
 
     private By getItemByVisibleText(String itemVisibleText){
-        return By.xpath(String.format(".//*[@class='product-details']//h3[contains(text(), '%d')]", itemVisibleText));
+        return By.xpath(String.format(".//*[@class='product-details']//h3[contains(text(), '%s')]", itemVisibleText));
     }
 
     public void clickOnItemWithName(String itemName){
