@@ -50,27 +50,14 @@ public class BasePage {
      * Frame methods.
      */
 
-    public void switchFromFrameToDefaultContent() {
+    public void switchFromFrameToDefaultContent() throws InterruptedException {
+        //temporary solution, due to Cart Pop Up didn't shown without sleep
+        Thread.sleep(2000);
         driver.switchTo().defaultContent();
-    }
-
-    public void switchParentFrame() {
-        driver.switchTo().parentFrame();
     }
 
     public void switchIntoFrame(WebElement frameElement) {
         waitForElementDisplayed(frameElement);
         driver.switchTo().frame(frameElement);
     }
-
-    public void switchToFrameActiveElement() {
-        driver.switchTo().activeElement();
-    }
-
-    public void switchIntoFrame(String frameName) {
-        WebElement element = getWebElement(By.id(frameName));
-        driver.switchTo().frame(element);
-    }
-
-
 }

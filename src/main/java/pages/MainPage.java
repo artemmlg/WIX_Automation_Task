@@ -12,7 +12,7 @@ public class MainPage extends BasePage {
     @FindBy(xpath = ".//*[@id='comp-jhalo8eilink']")
     private WebElement shopBtn;
 
-    public ShopPage clickShopButton(){
+    public ShopPage clickShopButton() {
         waitForElementDisplayed(shopBtn);
         shopBtn.click();
         return new ShopPage(driver);

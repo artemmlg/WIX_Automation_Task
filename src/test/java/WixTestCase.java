@@ -21,5 +21,4 @@ public class WixTestCase extends BaseTest {
         cartPopupPage.clickViewCart();
         Thread.sleep(4000);
     }
-
 }

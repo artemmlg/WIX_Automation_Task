@@ -20,15 +20,13 @@ public class ProductPage extends BasePage {
     @FindBy(xpath = ".//*[@class='slick-list draggable']//img")
     private List<WebElement> productImages;
 
-    public void switchIntoProductFrame(){
+    public void switchIntoProductFrame() {
         switchIntoFrame(shopFrame);
     }
 
-    public CartPopupPage clickAddToCartButton() throws InterruptedException {
+    public CartPopupPage clickAddToCartButton() {
         waitForElementDisplayed(addToCartButton);
         click(addToCartButton);
-        Thread.sleep(300);
         return new CartPopupPage(driver);
     }
-
 }

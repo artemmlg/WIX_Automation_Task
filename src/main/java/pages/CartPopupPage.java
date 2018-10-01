@@ -9,21 +9,18 @@ public class CartPopupPage extends BasePage {
         super(driver);
     }
 
-    @FindBy(xpath = ".//*[@id='jmq56klliframe']")
+    @FindBy(xpath = ".//*[@class='s_yOSHETPAPopupSkiniframe']")
     private WebElement cartPopupFrame;
 
     @FindBy(xpath = ".//a[@class='button-primary is-button-wide']")
     private WebElement viewCartBtn;
 
-    public void switchIntoCartPopupFrame(){
+    public void switchIntoCartPopupFrame() {
         switchIntoFrame(cartPopupFrame);
     }
 
-    public void clickViewCart(){
+    public void clickViewCart() {
         waitForElementDisplayed(viewCartBtn);
         click(viewCartBtn);
     }
-
-
-
 }
