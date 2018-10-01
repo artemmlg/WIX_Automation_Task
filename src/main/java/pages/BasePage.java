@@ -54,6 +54,10 @@ public class BasePage {
         driver.switchTo().defaultContent();
     }
 
+    public void switchParentFrame() {
+        driver.switchTo().parentFrame();
+    }
+
     public void switchIntoFrame(WebElement frameElement) {
         waitForElementDisplayed(frameElement);
         driver.switchTo().frame(frameElement);

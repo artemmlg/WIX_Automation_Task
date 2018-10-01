@@ -9,7 +9,7 @@ public class CartPopupPage extends BasePage {
         super(driver);
     }
 
-    @FindBy(xpath = ".//*[@id='TPAMultiSection_jh9acbtniframe']")
+    @FindBy(xpath = ".//*[@id='jmq56klliframe']")
     private WebElement cartPopupFrame;
 
     @FindBy(xpath = ".//a[@class='button-primary is-button-wide']")

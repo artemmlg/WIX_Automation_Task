@@ -15,7 +15,6 @@ public class WixTestCase extends BaseTest {
         ProductPage productPage = shopPage.clickOnItemWithName("Premium Glasses");
         productPage.switchFromFrameToDefaultContent();
         productPage.switchIntoProductFrame();
-        productPage.switchToFrameActiveElement();
         CartPopupPage cartPopupPage = productPage.clickAddToCartButton();
         cartPopupPage.switchFromFrameToDefaultContent();
         cartPopupPage.switchIntoCartPopupFrame();
