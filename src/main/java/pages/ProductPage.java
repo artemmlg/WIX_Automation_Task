@@ -25,7 +25,6 @@ public class ProductPage extends BasePage {
     }
 
     public CartPopupPage clickAddToCartButton() {
-        waitForElementDisplayed(addToCartButton);
         click(addToCartButton);
         return new CartPopupPage(driver);
     }

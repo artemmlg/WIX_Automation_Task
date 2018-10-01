@@ -20,7 +20,6 @@ public class CartPopupPage extends BasePage {
     }
 
     public void clickViewCart() {
-        waitForElementDisplayed(viewCartBtn);
         click(viewCartBtn);
     }
 }

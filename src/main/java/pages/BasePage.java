@@ -21,11 +21,13 @@ public class BasePage {
     }
 
     public void click(WebElement webElement) {
+        waitForElementDisplayed(webElement);
         webElement.click();
     }
 
     public void click(By by) {
         WebElement element = getWebElement(by);
+        waitForElementDisplayed(element);
         element.click();
     }
 
@@ -40,11 +42,6 @@ public class BasePage {
     public void waitForElementDisplayed(final WebElement webElement) {
         WebDriverWait wait = new WebDriverWait(driver, EXPLICIT_WAIT);
         wait.until(result -> webElement.isDisplayed());
-    }
-
-    public void waitForElementDisplayed(final By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, EXPLICIT_WAIT);
-        wait.until(result -> getWebElement(locator).isDisplayed());
     }
 
     public void waitForFrameDisplayed(final WebElement webElement){

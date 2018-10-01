@@ -13,7 +13,6 @@ public class MainPage extends BasePage {
     private WebElement shopBtn;
 
     public ShopPage clickShopButton() {
-        waitForElementDisplayed(shopBtn);
         shopBtn.click();
         return new ShopPage(driver);
     }

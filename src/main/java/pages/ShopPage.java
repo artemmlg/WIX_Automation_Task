@@ -18,7 +18,6 @@ public class ShopPage extends BasePage {
     }
 
     public ProductPage clickOnItemWithName(String itemName) {
-        waitForElementDisplayed(getItemByVisibleText(itemName));
         click(getItemByVisibleText(itemName));
         return new ProductPage(driver);
     }
