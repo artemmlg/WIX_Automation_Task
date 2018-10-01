@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 import static org.openqa.selenium.remote.BrowserType.*;
 
 public class WebDriverFactory {
-    private static String browserType = System.getProperty("browser");
+    private static String browserType = System.getProperty("browser", GOOGLECHROME);
 
     private static final long IMPLICIT_WAIT = 2;
     private static final long PAGE_WAIT = 30;

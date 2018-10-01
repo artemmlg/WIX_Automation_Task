@@ -11,8 +11,24 @@ public class ProductPage extends BasePage {
         super(driver);
     }
 
+    @FindBy(xpath = ".//*[@id='TPAMultiSection_jh9acbtniframe']")
+    private WebElement shopFrame;
+
+    @FindBy(xpath = ".//button[@type='submit']")
+    private WebElement addToCartButton;
+
     @FindBy(xpath = ".//*[@class='slick-list draggable']//img")
     private List<WebElement> productImages;
 
+    public void switchIntoProductFrame(){
+        switchIntoFrame(shopFrame);
+    }
+
+    public CartPopupPage clickAddToCartButton() throws InterruptedException {
+        waitForElementDisplayed(addToCartButton);
+        click(addToCartButton);
+        Thread.sleep(300);
+        return new CartPopupPage(driver);
+    }
 
 }

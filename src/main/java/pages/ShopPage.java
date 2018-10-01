@@ -3,18 +3,27 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class ShopPage extends BasePage {
     public ShopPage(WebDriver driver) {
         super(driver);
     }
 
-    private By getItemByVisibleText(String itemVisibleText){
+    @FindBy(xpath = ".//*[@id='TPASection_jh9acbfxiframe']")
+    private WebElement shopFrame;
+
+    private By getItemByVisibleText(String itemVisibleText) {
         return By.xpath(String.format(".//*[@class='product-details']//h3[contains(text(), '%s')]", itemVisibleText));
     }
 
-    public void clickOnItemWithName(String itemName){
-        waitForElementDisplayed((WebElement) getItemByVisibleText(itemName));
+    public ProductPage clickOnItemWithName(String itemName) {
+        waitForElementDisplayed(getItemByVisibleText(itemName));
         click(getItemByVisibleText(itemName));
+        return new ProductPage(driver);
+    }
+
+    public void switchIntoShopFrame(){
+        switchIntoFrame(shopFrame);
     }
 }

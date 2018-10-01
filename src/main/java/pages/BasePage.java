@@ -19,6 +19,10 @@ public class BasePage {
         return driver.findElement(by);
     }
 
+    public void click(WebElement webElement) {
+        webElement.click();
+    }
+
     public void click(By by) {
         WebElement element = getWebElement(by);
         element.click();
@@ -28,8 +32,41 @@ public class BasePage {
         driver.get("https://georgel8.wixsite.com/ait-ht");
     }
 
+    /**
+     * Explicitly/Implicitly waits.
+     */
+
     public void waitForElementDisplayed(final WebElement webElement) {
         WebDriverWait wait = new WebDriverWait(driver, EXPLICIT_WAIT);
         wait.until(result -> webElement.isDisplayed());
     }
+
+    public void waitForElementDisplayed(final By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, EXPLICIT_WAIT);
+        wait.until(result -> getWebElement(locator).isDisplayed());
+    }
+
+    /**
+     * Frame methods.
+     */
+
+    public void switchFromFrameToDefaultContent() {
+        driver.switchTo().defaultContent();
+    }
+
+    public void switchIntoFrame(WebElement frameElement) {
+        waitForElementDisplayed(frameElement);
+        driver.switchTo().frame(frameElement);
+    }
+
+    public void switchToFrameActiveElement() {
+        driver.switchTo().activeElement();
+    }
+
+    public void switchIntoFrame(String frameName) {
+        WebElement element = getWebElement(By.id(frameName));
+        driver.switchTo().frame(element);
+    }
+
+
 }
