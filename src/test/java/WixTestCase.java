@@ -19,6 +19,5 @@ public class WixTestCase extends BaseTest {
         cartPopupPage.switchFromFrameToDefaultContent();
         cartPopupPage.switchIntoCartPopupFrame();
         cartPopupPage.clickViewCart();
-        Thread.sleep(4000);
     }
 }

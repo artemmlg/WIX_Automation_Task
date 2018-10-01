@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage {
@@ -46,6 +47,11 @@ public class BasePage {
         wait.until(result -> getWebElement(locator).isDisplayed());
     }
 
+    public void waitForFrameDisplayed(final WebElement webElement){
+        WebDriverWait wait = new WebDriverWait(driver, EXPLICIT_WAIT);
+        wait.until(result -> ExpectedConditions.frameToBeAvailableAndSwitchToIt(webElement));
+    }
+
     /**
      * Frame methods.
      */
@@ -57,7 +63,7 @@ public class BasePage {
     }
 
     public void switchIntoFrame(WebElement frameElement) {
-        waitForElementDisplayed(frameElement);
+        waitForFrameDisplayed(frameElement);
         driver.switchTo().frame(frameElement);
     }
 }
