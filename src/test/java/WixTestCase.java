@@ -13,14 +13,14 @@ public class WixTestCase extends BaseTest {
         ProductPage productPage = shopPage.clickOnItemWithName("Premium Glasses").switchIntoProductFrame();
         CartPopupPage cartPopupPage = productPage.clickAddToCartButton().switchIntoCartPopupFrame();
         cartPopupPage.removeItemFromCartPopup(0);
-        productPage = cartPopupPage.closeCartPopupBackToProduct().switchIntoProductFrame();
-        cartPopupPage = productPage.clickAddToCartButton().switchIntoCartPopupFrame();
-        productPage = cartPopupPage.closeCartPopupBackToProduct().switchIntoProductFrame();
-        shopPage = productPage.clickStoresButton().switchIntoCartWidgetFrame();
-        cartPopupPage = shopPage.clickOnCartWidgetButton().switchIntoCartPopupFrame();
-        shopPage = cartPopupPage.closeCartPopupBackToShop().switchIntoShopFrame();
-        productPage = shopPage.clickOnItemWithName("I\'m a product").switchIntoProductFrame();
-        cartPopupPage = productPage.clickAddToCartButton().switchIntoCartPopupFrame();
+        cartPopupPage.closeCartPopupBackToProduct().switchIntoProductFrame();
+        productPage.clickAddToCartButton().switchIntoCartPopupFrame();
+        cartPopupPage.closeCartPopupBackToProduct().switchIntoProductFrame();
+        productPage.clickStoresButton().switchIntoCartWidgetFrame();
+        shopPage.clickOnCartWidgetButton().switchIntoCartPopupFrame();
+        cartPopupPage.closeCartPopupBackToShop().switchIntoShopFrame();
+        shopPage.clickOnItemWithName("I\'m a product").switchIntoProductFrame();
+        productPage.clickAddToCartButton().switchIntoCartPopupFrame();
         cartPopupPage.clickViewCart();
     }
 }
