@@ -9,8 +9,7 @@ public class WixTestCase extends BaseTest {
     @Test
     public void testWixShop() {
         MainPage mainPage = new MainPage(driver);
-        mainPage.openBaseURL();
-        ShopPage shopPage = mainPage.clickShopButton().switchIntoShopFrame();
+        ShopPage shopPage = mainPage.openBaseURL().clickShopButton().switchIntoShopFrame();
         ProductPage productPage = shopPage.clickOnItemWithName("Premium Glasses").switchIntoProductFrame();
         CartPopupPage cartPopupPage = productPage.clickAddToCartButton().switchIntoCartPopupFrame();
         cartPopupPage.removeItemFromCartPopup(0);

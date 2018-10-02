@@ -34,10 +34,6 @@ public class BasePage {
         element.click();
     }
 
-    public void openBaseURL() {
-        driver.get("https://georgel8.wixsite.com/ait-ht");
-    }
-
     /**
      * Explicitly/Implicitly waits.
      */

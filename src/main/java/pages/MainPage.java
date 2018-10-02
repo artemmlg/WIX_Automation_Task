@@ -12,6 +12,11 @@ public class MainPage extends BasePage {
     @FindBy(xpath = ".//*[@id='comp-jhalo8eilink']")
     private WebElement shopBtn;
 
+    public MainPage openBaseURL() {
+        driver.get("https://georgel8.wixsite.com/ait-ht");
+        return this;
+    }
+
     public ShopPage clickShopButton() {
         shopBtn.click();
         return new ShopPage(driver);
