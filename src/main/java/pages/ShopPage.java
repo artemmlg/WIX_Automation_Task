@@ -13,6 +13,12 @@ public class ShopPage extends BasePage {
     @FindBy(xpath = ".//*[@id='TPASection_jh9acbfxiframe']")
     private WebElement shopFrame;
 
+    @FindBy(xpath = ".//*[@id='comp-jh9acbuwiframe']")
+    private WebElement cartWidgetFrame;
+
+    @FindBy(xpath = ".//*[@id='cart-widget-button']")
+    private WebElement cartWidgetBtn;
+
     private By getItemByVisibleText(String itemVisibleText) {
         return By.xpath(String.format(".//*[@class='product-details']//h3[contains(text(), '%s')]", itemVisibleText));
     }
@@ -26,5 +32,16 @@ public class ShopPage extends BasePage {
         switchFromFrameToDefaultContent();
         switchIntoFrame(shopFrame);
         return this;
+    }
+
+    public ShopPage switchIntoCartWidgetFrame() {
+        switchFromFrameToDefaultContent();
+        switchIntoFrame(cartWidgetFrame);
+        return this;
+    }
+
+    public CartPopupPage clickOnCartWidgetButton() {
+        click(cartWidgetBtn);
+        return new CartPopupPage(driver);
     }
 }

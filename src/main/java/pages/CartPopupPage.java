@@ -38,8 +38,13 @@ public class CartPopupPage extends BasePage {
         click(removeItemFromCartPopup);
     }
 
-    public ProductPage closeCartPopup() {
+    public ProductPage closeCartPopupBackToProduct() {
         click(closeCartPopupButton);
         return new ProductPage(driver);
+    }
+
+    public ShopPage closeCartPopupBackToShop() {
+        click(closeCartPopupButton);
+        return new ShopPage(driver);
     }
 }

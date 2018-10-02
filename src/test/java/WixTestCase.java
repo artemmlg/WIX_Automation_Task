@@ -14,9 +14,11 @@ public class WixTestCase extends BaseTest {
         ProductPage productPage = shopPage.clickOnItemWithName("Premium Glasses").switchIntoProductFrame();
         CartPopupPage cartPopupPage = productPage.clickAddToCartButton().switchIntoCartPopupFrame();
         cartPopupPage.removeItemFromCartPopup(0);
-        productPage = cartPopupPage.closeCartPopup().switchIntoProductFrame();
+        productPage = cartPopupPage.closeCartPopupBackToProduct().switchIntoProductFrame();
         cartPopupPage = productPage.clickAddToCartButton().switchIntoCartPopupFrame();
-        productPage = cartPopupPage.closeCartPopup().switchIntoProductFrame();
-        productPage.clickStoresButton();
+        productPage = cartPopupPage.closeCartPopupBackToProduct().switchIntoProductFrame();
+        shopPage = productPage.clickStoresButton().switchIntoCartWidgetFrame();
+        cartPopupPage = shopPage.clickOnCartWidgetButton().switchIntoCartPopupFrame();
+        cartPopupPage.closeCartPopupBackToShop().switchIntoShopFrame();
     }
 }
