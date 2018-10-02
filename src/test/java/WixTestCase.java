@@ -7,17 +7,16 @@ import pages.ShopPage;
 public class WixTestCase extends BaseTest {
 
     @Test
-    public void testWixShop() throws InterruptedException {
+    public void testWixShop() {
         MainPage mainPage = new MainPage(driver);
         mainPage.openBaseURL();
-        ShopPage shopPage = mainPage.clickShopButton();
-        shopPage.switchIntoShopFrame();
-        ProductPage productPage = shopPage.clickOnItemWithName("Premium Glasses");
-        productPage.switchFromFrameToDefaultContent();
-        productPage.switchIntoProductFrame();
-        CartPopupPage cartPopupPage = productPage.clickAddToCartButton();
-        cartPopupPage.switchFromFrameToDefaultContent();
-        cartPopupPage.switchIntoCartPopupFrame();
-        cartPopupPage.clickViewCart();
+        ShopPage shopPage = mainPage.clickShopButton().switchIntoShopFrame();
+        ProductPage productPage = shopPage.clickOnItemWithName("Premium Glasses").switchIntoProductFrame();
+        CartPopupPage cartPopupPage = productPage.clickAddToCartButton().switchIntoCartPopupFrame();
+        cartPopupPage.removeItemFromCartPopup(0);
+        productPage = cartPopupPage.closeCartPopup().switchIntoProductFrame();
+        cartPopupPage = productPage.clickAddToCartButton().switchIntoCartPopupFrame();
+        productPage = cartPopupPage.closeCartPopup().switchIntoProductFrame();
+        productPage.clickStoresButton();
     }
 }

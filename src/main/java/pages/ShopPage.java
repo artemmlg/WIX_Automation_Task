@@ -22,7 +22,9 @@ public class ShopPage extends BasePage {
         return new ProductPage(driver);
     }
 
-    public void switchIntoShopFrame() {
+    public ShopPage switchIntoShopFrame() {
+        switchFromFrameToDefaultContent();
         switchIntoFrame(shopFrame);
+        return this;
     }
 }

@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,11 +16,30 @@ public class CartPopupPage extends BasePage {
     @FindBy(xpath = ".//a[@class='button-primary is-button-wide']")
     private WebElement viewCartBtn;
 
-    public void switchIntoCartPopupFrame() {
+    @FindBy(xpath = ".//button[@class='remove-item']")
+    private WebElement removeItemFromCartPopup;
+
+    @FindBy(xpath = ".//button[@id='cart-widget-close']")
+    private WebElement closeCartPopupButton;
+
+    private By listOfItemsInCat = By.xpath(".//*[@class='cart-content']//li");
+
+    public CartPopupPage switchIntoCartPopupFrame() {
         switchIntoFrame(cartPopupFrame);
+        return this;
     }
 
     public void clickViewCart() {
         click(viewCartBtn);
+    }
+
+    public void removeItemFromCartPopup(int itemNum) {
+        moveToElementFromList(listOfItemsInCat, itemNum);
+        click(removeItemFromCartPopup);
+    }
+
+    public ProductPage closeCartPopup() {
+        click(closeCartPopupButton);
+        return new ProductPage(driver);
     }
 }
