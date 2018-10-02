@@ -20,7 +20,7 @@ public class ShopPage extends BasePage {
     private WebElement cartWidgetBtn;
 
     private By getItemByVisibleText(String itemVisibleText) {
-        return By.xpath(String.format(".//*[@class='product-details']//h3[contains(text(), '%s')]", itemVisibleText));
+        return By.xpath(String.format(".//*[@class='product-details']//h3[contains(text(), \"%s\")]", itemVisibleText));
     }
 
     public ProductPage clickOnItemWithName(String itemName) {

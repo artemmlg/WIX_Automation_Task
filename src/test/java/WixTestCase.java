@@ -18,6 +18,9 @@ public class WixTestCase extends BaseTest {
         productPage = cartPopupPage.closeCartPopupBackToProduct().switchIntoProductFrame();
         shopPage = productPage.clickStoresButton().switchIntoCartWidgetFrame();
         cartPopupPage = shopPage.clickOnCartWidgetButton().switchIntoCartPopupFrame();
-        cartPopupPage.closeCartPopupBackToShop().switchIntoShopFrame();
+        shopPage = cartPopupPage.closeCartPopupBackToShop().switchIntoShopFrame();
+        productPage = shopPage.clickOnItemWithName("I\'m a product").switchIntoProductFrame();
+        cartPopupPage = productPage.clickAddToCartButton().switchIntoCartPopupFrame();
+        cartPopupPage.clickViewCart();
     }
 }
