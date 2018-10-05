@@ -33,18 +33,18 @@ public class CartPopupPage extends BasePage {
         click(viewCartBtn);
     }
 
-    public void removeItemFromCartPopup(int itemNum) {
+    public CartPopupPage removeItemFromCartPopup(int itemNum) {
         moveToElementFromList(listOfItemsInCat, itemNum);
         click(removeItemFromCartPopup);
+        return this;
     }
 
-    public ProductPage closeCartPopupBackToProduct() {
+    public Object closePopup() {
         click(closeCartPopupButton);
-        return new ProductPage(driver);
-    }
-
-    public ShopPage closeCartPopupBackToShop() {
-        click(closeCartPopupButton);
-        return new ShopPage(driver);
+        if (driver.getPageSource().contains("ADD TO CART")) {
+            return new ProductPage(driver);
+        } else {
+            return new ShopPage(driver);
+        }
     }
 }
