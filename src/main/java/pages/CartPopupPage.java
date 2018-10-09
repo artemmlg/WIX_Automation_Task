@@ -41,10 +41,6 @@ public class CartPopupPage extends BasePage {
 
     public Object closePopup() {
         click(closeCartPopupButton);
-        if (driver.getPageSource().contains("ADD TO CART")) {
-            return new ProductPage(driver);
-        } else {
-            return new ShopPage(driver);
-        }
+        return driver.getPageSource().contains("ADD TO CART") ? new ProductPage(driver) : new ShopPage(driver);
     }
 }
