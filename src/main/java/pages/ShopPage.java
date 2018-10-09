@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class ShopPage extends BasePage {
     public ShopPage(WebDriver driver) {
         super(driver);
@@ -19,8 +21,11 @@ public class ShopPage extends BasePage {
     @FindBy(xpath = ".//*[@id='cart-widget-button']")
     private WebElement cartWidgetBtn;
 
-    private By getItemByVisibleText(String itemVisibleText) {
-        return By.xpath(String.format(".//*[@class='product-details']//h3[contains(text(), \"%s\")]", itemVisibleText));
+    @FindBy(xpath = ".//*[@class='product-details']//h3")
+    private List<WebElement> shopItems;
+
+    private WebElement getItemByVisibleText(String itemVisibleText) {
+        return shopItems.stream().filter(webElement -> webElement.getText().equals(itemVisibleText)).findAny().orElse(null);
     }
 
     public ProductPage clickOnItemWithName(String itemName) {
