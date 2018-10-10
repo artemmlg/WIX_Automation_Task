@@ -19,19 +19,9 @@ public class BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    protected WebElement getWebElement(By by) {
-        return driver.findElement(by);
-    }
-
     public void click(WebElement webElement) {
         waitForElementDisplayed(webElement);
         webElement.click();
-    }
-
-    public void click(By by) {
-        WebElement element = getWebElement(by);
-        waitForElementDisplayed(element);
-        element.click();
     }
 
     /**
@@ -55,7 +45,7 @@ public class BasePage {
     public void switchFromFrameToDefaultContent() {
         //temporary solution, due to Cart Pop Up didn't shown without sleep
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -72,17 +62,9 @@ public class BasePage {
      * Actions.
      */
 
-    protected List<WebElement> getWebElements(By by) {
-        return driver.findElements(by);
-    }
-
-    public int getSize(By by) {
-        return getWebElements(by).size();
-    }
-
-    public void moveToElementFromList(By by, int num) {
+    public void moveToElementFromList(List<WebElement> elements, int num) {
         Actions actions = new Actions(driver);
-        WebElement element = getWebElements(by).get(num);
+        WebElement element = elements.get(num);
         actions.moveToElement(element).build().perform();
     }
 }

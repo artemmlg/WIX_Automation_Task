@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class CartPopupPage extends BasePage {
     public CartPopupPage(WebDriver driver) {
         super(driver);
@@ -22,7 +24,8 @@ public class CartPopupPage extends BasePage {
     @FindBy(xpath = ".//button[@id='cart-widget-close']")
     private WebElement closeCartPopupButton;
 
-    private By listOfItemsInCat = By.xpath(".//*[@class='cart-content']//li");
+    @FindBy(xpath = ".//*[@class='cart-content']//li")
+    private List<WebElement> listOfItemsInCart;
 
     public CartPopupPage switchIntoCartPopupFrame() {
         switchIntoFrame(cartPopupFrame);
@@ -34,7 +37,7 @@ public class CartPopupPage extends BasePage {
     }
 
     public CartPopupPage removeItemFromCartPopup(int itemNum) {
-        moveToElementFromList(listOfItemsInCat, itemNum);
+        moveToElementFromList(listOfItemsInCart, itemNum);
         click(removeItemFromCartPopup);
         return this;
     }
